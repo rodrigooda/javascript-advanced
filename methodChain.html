@@ -1,0 +1,39 @@
+<HTML>
+
+<HEAD>
+
+  <TITLE>Your Title Here</TITLE>
+
+</HEAD>
+
+<BODY>
+
+  <script>
+    var obj = function () {
+      this.i = 0;
+      this.add = function (i) {
+        this.i += i;
+        return this;
+      };
+      this.substract = function (i) {
+        this.i -= i;
+        return this;
+      };
+      this.print = function () {
+        console.log(this.i);
+      };
+    };
+
+    var x = new obj();
+    var x2 = new obj();
+
+    x.add(3);
+    x.substract(2);
+    x.print();
+
+    x2.add(3).substract(1).print();
+
+  </script>
+</BODY>
+
+</HTML>

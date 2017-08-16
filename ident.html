@@ -1,0 +1,23 @@
+<div class="col-lg-12 text-center">
+    <h1 id="codeTitle">Call, Apply e Bind</h1>
+    <pre id="code">var obj = {num : 2};
+      var addToThis = function(a){
+        return this.num + a;
+      };
+      console.log(addToThis.call(obj, 3));
+      var obj2 = {num : 2};
+      var addToThis2 = function(a,b,c){
+        return this.num + a + b + c;
+      };
+      console.log(addToThis2.call(obj2,1,2,3));
+      var obj3 = {num : 2};
+      var arr = [2,2,3];
+      console.log(addToThis2.apply(obj3, arr));
+      var obj4 = {num : 2};
+      var bound = addToThis2.bind(obj4);
+      console.log(bound(1,2,3));
+</pre>
+    <h1 id="codeTitle">Resultado</h1>
+    <ul style="list-style: none;" id="result"></ul>
+    <a onclick="home()" class="btn btn-default">Voltar</a>
+</div>

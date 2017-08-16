@@ -1,0 +1,83 @@
+<HTML>
+
+<html dir="ltr" lang="pt-BR">
+
+<HEAD>
+  <meta charset="UTF-8" />
+
+  <TITLE>Your Title Here</TITLE>
+  <!-- jQuery Version 3.1.1 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</HEAD>
+
+<BODY>
+  <pre><code id="codigo"></code></pre>
+  <script id="code" type='text/javascript'>
+    var animals = [
+      { name: 'Fluffykins', species: 'rabbit' },
+      { name: 'Caro', species: 'dog' },
+      { name: 'Hamilton', species: 'dog' },
+      { name: 'Lia', species: 'fish' },
+      { name: 'Megan', species: 'cat' },
+      { name: 'Jill', species: 'fish' }
+    ];
+
+    var dogs = [];
+    for (let animal of animals)
+      if (animal.species === 'dog')
+        dogs.push(animal);
+
+    console.log(dogs);
+
+    var dogs2 = animals.filter(function (animal) {
+      return animal.species === 'dog';
+    });
+
+    console.log(dogs2);
+
+    var isDog = function (animal) {
+      return animal.species === 'dog';
+    };
+    var noDog = function (animal) {
+      return animal.species !== 'dog';
+    };
+
+
+    var dogs3 = animals.filter(isDog);
+    var otherAnimals = animals.filter(noDog);
+
+    console.log(dogs3);
+    console.log(otherAnimals);
+
+    var names = [];
+    for (let animal of animals)
+      names.push(animal.name);
+
+    console.log(names);
+    var names2 = animals.map(function (animal) {
+      return animal.name + 'is a ' + animal.species;
+    });
+    console.log(names2);
+
+    var orders = [
+      { amount: 250 },
+      { amount: 400 },
+      { amount: 100 },
+      { amount: 325 }
+    ];
+
+    var totalAmount = 0;
+    for (let order of orders)
+      totalAmount += order.amount;
+    console.log(totalAmount);
+
+    var totalAmount2 = orders.reduce(function (sum, order) {
+      return sum += order.amount;
+    }, 0);
+
+    console.log(totalAmount2);
+
+  </script>
+</BODY>
+
+</HTML>

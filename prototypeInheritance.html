@@ -1,0 +1,55 @@
+<HTML>
+
+<HEAD>
+
+  <TITLE>Your Title Here</TITLE>
+
+</HEAD>
+
+<BODY>
+
+  <script type='text/javascript'>
+    //base class
+    var Job = function () {
+      this.pays = true;
+    }
+
+    //prototype method
+
+    Job.prototype.print = function () {
+      console.log(this.pays ? 'Please hire me' : 'no thank you');
+    };
+
+    var basicJob = new Job();
+    basicJob.print();
+    //subclass
+    var TechJob = function (title, pays) {
+      Job.call(this);
+
+      this.title = title;
+      this.pays = pays;
+    }
+    //herdar prototype da classe base
+    TechJob.prototype = Object.create(Job.prototype);
+    TechJob.prototype.constructor = TechJob;
+
+    Object.prototype.printMO = function () {
+      console.log('I am executing from the Master Object');
+    };
+
+    TechJob.prototype.print = function () {
+      console.log(this.pays ? 'Job is great, Please hire me' : 'I would rather learn javascript');
+    };
+
+    var softwarePosition = new TechJob('JavaScript Programer', true);
+    var softwarePosition2 = new TechJob('vb Programer', false);
+
+    softwarePosition.print();
+    softwarePosition2.print();
+
+    softwarePosition2.printMO();
+
+  </script>
+</BODY>
+
+</HTML>

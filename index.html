@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Javascript advanced</title>
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery Version 3.1.1 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            padding-top: 70px;
+            /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+        }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" onclick="home()">Javascript Advanced</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tópicos
+                          <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="callTpl()">Call</a></li>
+                            <li><a onclick="applyTpl()">Apply</a></li>
+                            <li><a onclick="bindTpl()">Bind</a></li>
+                            <li><a href="promises.html">Promises</a></li>
+                            <li><a href="methodChain.html">Method chain</a></li>
+                            <li><a href="iife.html">Immediately-Invoked Function Expression</a></li>
+                            <li><a href="prototype.html">Prototype</a></li>
+                            <li><a href="prototypeInheritance.html">Prototype Inheritance</a></li>
+                            <li><a href="currying.html">Currying</a></li>
+                            <li><a href="currying2.html">Currying2</a></li>
+                            <li><a href="worker.html">Web Worker</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div id="app"></div>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Templates -->
+    <script id="start-template" type="x-template">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>Javascript Advanced</h1>
+                <ul class="list-unstyled">
+                    <li><a onclick="callTpl()">Call</a></li>
+                    <li><a onclick="applyTpl()">Apply</a></li>
+                    <li><a onclick="bindTpl()">Bind</a></li>
+                    <li><a href="promises.html">Promises</a></li>
+                    <li><a href="methodChain.html">Method chain</a></li>
+                    <li><a href="iife.html">Immediately-Invoked Function Expression</a></li>
+                    <li><a href="prototype.html">Prototype</a></li>
+                    <li><a href="prototypeInheritance.html">Prototype Inheritance</a></li>
+                    <li><a href="currying.html">Currying</a></li>
+                    <li><a href="currying2.html">Currying2</a></li>
+                    <li><a href="worker.html">Web Worker</a></li>
+                </ul>
+            </div>
+        </div>
+    </script>
+
+
+    <script id="code-template" type="x-template">
+        <div class="col-lg-12">
+            <h1 id="title"></h1>
+            <h3>Definição</h3>
+            <p id="definition"></p>
+            <h3>Código</h3>
+            <pre><code id="code">
+    </code></pre>
+            <h3 style="white-space:pre-wrap;" id="codeTitle">Resultado</h3>
+            <pre style="list-style: none;" id="result"></pre>
+            <a onclick="home()" class="btn btn-default">Voltar</a>
+        </div>
+    </script>
+    <script>
+        //cached DOM
+        var $app = $("#app");
+        var $codeTpl = $('#code-template').html();
+        var $startTpl = $('#start-template').html();
+
+        function home() {
+            $app.empty().append($($startTpl));
+        };
+
+        function cabTpl() {
+            $app.empty().append($($codeTpl));
+            //  cab();
+        };
+
+        function callTpl() {
+            $app.empty().append($($codeTpl));
+            call.init();
+            call.code();
+        };
+
+        function applyTpl() {
+            $app.empty().append($($codeTpl));
+            apply.init();
+            apply.code();
+        };
+
+        function bindTpl() {
+            $app.empty().append($($codeTpl));
+            mbind.init();
+            mbind.code();
+        };
+
+        $("pre code").each(function () {
+            var html = $(this).html();
+            var pattern = html.match(/\s*\n[\t\s]*/);
+            $(this).html(html.replace(new RegExp(pattern, "g"), '\n'));
+        });
+        home();
+    </script>
+    <script src="js/call.js" type='text/javascript'></script>
+    <script src="js/apply.js" type='text/javascript'></script>
+    <script src="js/bind.js" type='text/javascript'></script>
+
+</body>
+
+</html>

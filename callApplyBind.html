@@ -1,0 +1,46 @@
+<HTML>
+
+<html dir="ltr" lang="pt-BR">
+
+<HEAD>
+  <meta charset="UTF-8" />
+
+  <TITLE>Your Title Here</TITLE>
+  <!-- jQuery Version 3.1.1 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</HEAD>
+
+<BODY>
+  <pre><code id="codigo"></code></pre>
+  <script id="code" type='text/javascript'>
+    // CAll adiciona temporariamente uma função a um objeto com argumentos
+    var obj = { num: 2 };
+    var addToThis = function (a) {
+      return this.num + a;
+    };
+    console.log(addToThis.call(obj, 3));
+    var obj2 = { num: 2 };
+    var addToThis2 = function (a, b, c) {
+      return this.num + a + b + c;
+    };
+    console.log(addToThis2.call(obj2, 1, 2, 3));
+    //functionName.call(object, functionArguments)
+    //Apply  adiciona temporariamente uma fun��o a um metodo porem os argumentos sao um array
+    var obj3 = { num: 2 };
+    var arr = [2, 2, 3];
+    console.log(addToThis2.apply(obj3, arr));
+    //functionName.apply(object, functionArgumentsAsArray)
+    // Bind cria uma fun��o vinculada ao this
+    var obj4 = { num: 2 };
+    var bound = addToThis2.bind(obj4);
+    console.log(bound(1, 2, 3));
+
+  </script>
+  <script type='text/javascript'>
+    var code = $("#code").html();
+    $("#codigo").append(code);
+
+  </script>
+</BODY>
+
+</HTML>

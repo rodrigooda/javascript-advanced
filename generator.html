@@ -1,0 +1,77 @@
+<HTML>
+
+<html dir="ltr" lang="pt-BR">
+
+<HEAD>
+  <meta charset="UTF-8" />
+
+  <TITLE>Your Title Here</TITLE>
+  <!-- jQuery Version 3.1.1 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</HEAD>
+
+<BODY>
+  <select id="combo"></select>
+  <script id="code" type='text/javascript'>
+    function* generator() {
+      yield 1;
+      yield 2;
+      yield 3;
+      yield 4;
+    };
+
+    function* infinite() {
+      let ii = 0;
+      while (true) {
+        yield ii++;
+      }
+    };
+    let iterator = generator();
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    let iterator2 = infinite();
+    console.log(iterator2.next());
+    console.log(iterator2.next());
+    console.log(iterator2.next());
+    console.log(iterator2.next());
+    console.log(iterator2.next());
+
+    var ajax1 = function () {
+      $.ajax("https://vrest.io/i/demo/m/VC/contacts")
+      .done(function (resp) {
+        console.log(resp)
+        resp.map(function (item) {
+          $("#combo").append('<option value="' + item._id + '">' + item._id + '</option>')
+        });
+      })
+      .fail(function (error) {
+        alert(error);
+      });
+    };
+    var ajax2 = function () {
+      $.ajax("https://vrest.io/i/demo/m/VC/contacts/" + "536493005f56452a0300000f")
+      .done(function (resp) {
+        console.log(resp);
+        $("#combo").val(resp._id);
+      })
+      .fail(function (error) {
+        alert(error);
+      });
+    };
+
+    function* promisse() {
+      var data;
+      yield ajax1();
+      yield ajax2();
+    };
+    let iterator3 = promisse();
+    console.log(iterator3.next());
+    console.log(iterator3.next());
+
+  </script>
+</BODY>
+
+</HTML>

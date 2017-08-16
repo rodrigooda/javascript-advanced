@@ -1,0 +1,59 @@
+<HTML>
+
+<html dir="ltr" lang="pt-BR">
+
+<HEAD>
+  <meta charset="UTF-8" />
+
+  <TITLE>Your Title Here</TITLE>
+
+</HEAD>
+
+<BODY>
+
+  <script type='text/javascript'>
+    //function
+    function increment(i) {
+      return i + 1;
+    };
+    //function expression
+    var increment = function (i) {
+      return i + 1;
+    };
+    console.log(increment(1));
+
+    //other code
+    console.log((function (i) {
+      return i + 1;
+    })(2))
+
+    console.log((function (i) {
+      return i + 1;
+    }(5)))
+
+    !function (i) { console.log(i + 1) }(9);
+
+    var counter = (function () {
+      i = 0;
+      return {
+        get: function () {
+          return i;
+        },
+        set: function (val) {
+          i = val;
+        },
+        increment: function () {
+          i++;
+        }
+      };
+    })();
+
+    console.log(counter.get());
+    counter.set(5);
+    counter.increment();
+    console.log(counter.get());
+
+  </script>
+</BODY>
+
+</HTML>

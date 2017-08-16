@@ -1,0 +1,45 @@
+<HTML>
+
+<html dir="ltr" lang="pt-BR">
+
+<HEAD>
+  <meta charset="UTF-8" />
+
+  <TITLE>Your Title Here</TITLE>
+  <!-- jQuery Version 3.1.1 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</HEAD>
+
+<BODY>
+  <pre><code id="codigo"></code></pre>
+  <script id="code" type='text/javascript'>
+    let mySet = new Set([1, 2, 2, 2, 3]);
+    for (let val of mySet) {
+      console.log(val);
+    }
+    //console.dir(mySet);
+
+    let anObject = {
+      name: 'megan',
+      age: 20,
+      friends: ['john', 'kim', 'Lia'],
+      getName: function () {
+        return this.name;
+      }
+    };
+
+    for (let key in anObject) {
+      console.log(key);
+    }
+
+
+    let myArray = [1, 2, 3, 4, 5];
+
+    let iterator = myArray[Symbol.iterator]();
+
+    console.log(iterator.next());
+
+  </script>
+</BODY>
+
+</HTML>

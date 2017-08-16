@@ -1,0 +1,74 @@
+<HTML>
+
+<HEAD>
+
+  <TITLE>Your Title Here</TITLE>
+
+</HEAD>
+
+<BODY>
+
+  <script>
+    let promiseToCleanTheRoom = new Promise(function (resolve, reject) {
+      let isClean = true;
+      isClean ? resolve("Clean") : reject("not Clean");
+    });
+    promiseToCleanTheRoom.then(function (resolveResp) {
+      console.log('The room is ' + resolveResp);
+    }).catch(function (rejectResp) {
+      console.log('The room is ' + rejectResp);
+    });
+
+    let cleanRoom = function () {
+      return new Promise(function (resolve, reject) {
+        resolve('Cleaned the Room');
+      });
+    };
+    let removeGarbage = function (message) {
+      return new Promise(function (resolve, reject) {
+        resolve(message + ' remove the garbage');
+      });
+    };
+    let winIceCream = function (message) {
+      return new Promise(function (resolve, reject) {
+        resolve(message + ' won icecream');
+      });
+    };
+
+
+    let cleanRoom2 = function () {
+      return new Promise(function (resolve, reject) {
+        resolve('Cleaned the Room');
+      });
+    };
+    let removeGarbage2 = function () {
+      return new Promise(function (resolve, reject) {
+        resolve(' remove the garbage');
+      });
+    };
+    let winIceCream2 = function () {
+      return new Promise(function (resolve, reject) {
+        resolve(' won icecream');
+      });
+    };
+
+    cleanRoom().then(function (result) {
+      return removeGarbage(result);
+    }).then(function (result) {
+      return winIceCream(result);
+    }).then(function (result) {
+      console.log('finish ' + result);
+      console.log('-----------');
+    });
+
+    Promise.all([cleanRoom2(), removeGarbage2(), winIceCream2()]).then(function (result) {
+      function imprime(r1, r2, r3) {
+        console.log('all fineshed ' + r1 + r2 + r3);
+      };
+      imprime.apply(null, result);
+    })
+
+  </script>
+</BODY>
+
+</HTML>

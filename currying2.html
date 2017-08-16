@@ -1,0 +1,31 @@
+<HTML>
+<html dir="ltr" lang="pt-BR">
+
+<HEAD>
+  <meta charset="UTF-8" />
+
+  <TITLE>Your Title Here</TITLE>
+
+</HEAD>
+
+<BODY>
+
+  <script type='text/javascript'>
+    var sayWhat = function (a) {
+      return function (b) {
+        return function (c) {
+          console.log('saying ' + a + ' to ' + b + ' using ' + c);
+        }
+      }
+    }
+
+    sayWhat('hello')('to friends')('javascript');
+
+    var sayHi = sayWhat('hi');
+    var sayHiToMe = sayHi('me');
+    var sayHiToMeUsingNothing = sayHiToMe('nothing');
+
+  </script>
+</BODY>
+
+</HTML>
